@@ -1,7 +1,12 @@
 import os
+import sys
+
+# Doit être avant les imports openvoice pour que commons/utils/models soient trouvables
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(BASE_DIR, 'openvoice'))
+
 import torch
 import glob
-import sys
 import shutil
 import numpy as np
 import soundfile as sf
@@ -10,7 +15,6 @@ from openvoice import se_extractor
 from openvoice.api import ToneColorConverter
 
 # =================CONFIGURATION=================
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODELS_DIR = os.path.join(BASE_DIR, "models_openvoice")
 TARGETS_ROOT = os.path.join(MODELS_DIR, "targets")  # Nouveau dossier racine des voix
 
